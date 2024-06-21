@@ -1,6 +1,16 @@
 # Options
 
 Type Option represents an optional value: every Option is either Some and contains a value, or None, and does not.
+
+```rust
+enum Option<T> {
+    Some(T),
+    None,
+}
+```
+
+This type is especially crucial in Rust because the language does not have null values like many other programming languages (e.g., null in Java or None in Python). Instead, Rust uses Option to explicitly indicate the possibility of an "absent" value.
+
 Option types are very common in Rust code, as they have a number of uses:
 
 - Initial values
