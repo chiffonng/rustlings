@@ -5,10 +5,16 @@
 // Execute `rustlings hint enums3` or use the `hint` watch subcommand for a
 // hint.
 
-// I AM NOT DONE
+// Use enums and structs to simulate a state machine (useful for applications like GUIs, games, or network servers), with methods that alter the state of an object based on different types of messages received
 
 enum Message {
-    // TODO: implement the message variant types based on their usage below
+    /**
+    Defines the kinds of operations that can be performed, each represented as a different variant, with the data types based on the `test_match_message_call` test.
+     */
+    ChangeColor(u8, u8, u8),
+    Echo(String),
+    Move(Point),
+    Quit,
 }
 
 struct Point {
@@ -17,6 +23,8 @@ struct Point {
 }
 
 struct State {
+    /** Maintains the current state, and methods on this struct modify its attributes based on the received messages
+     */
     color: (u8, u8, u8),
     position: Point,
     quit: bool,
@@ -41,9 +49,14 @@ impl State {
     }
 
     fn process(&mut self, message: Message) {
-        // TODO: create a match expression to process the different message variants
-        // Remember: When passing a tuple as a function argument, you'll need extra parentheses:
-        // fn function((t, u, p, l, e))
+        // Create a match expression to process the different message variants
+        // Remember: When passing a tuple as a function argument, you'll need extra parentheses: fn function((t, u, p, l, e))
+        match message {
+            Message::ChangeColor(r, g, b) => self.change_color((r, g, b)),
+            Message::Quit => self.quit(),
+            Message::Echo(s) => self.echo(s),
+            Message::Move(p) => self.move_position(p),
+        }
     }
 }
 
