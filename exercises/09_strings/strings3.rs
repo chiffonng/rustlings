@@ -3,21 +3,27 @@
 // Execute `rustlings hint strings3` or use the `hint` watch subcommand for a
 // hint.
 
-// I AM NOT DONE
+// https://doc.rust-lang.org/book/ch08-02-strings.html#updating-a-string
 
 fn trim_me(input: &str) -> String {
     // TODO: Remove whitespace from both ends of a string!
-    ???
+    input.trim().to_string()
 }
 
 fn compose_me(input: &str) -> String {
-    // TODO: Add " world!" to the string! There are multiple ways to do this!
-    ???
+    // Add " world!" to the string! 
+    // String::from(input) + " world!"
+    // input.to_string() + " world!";
+    // input.to_string() + &" world!".to_string()
+    // format!("{} world!", input)
+    let mut s = String::from(input);
+    s.push_str(" world!");
+    s
 }
 
 fn replace_me(input: &str) -> String {
-    // TODO: Replace "cars" in the string with "balloons"!
-    ???
+    // Replace "cars" in the string with "balloons"!
+    input.replace("cars", "balloons")
 }
 
 #[cfg(test)]
