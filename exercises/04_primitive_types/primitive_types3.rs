@@ -5,11 +5,10 @@
 // Execute `rustlings hint primitive_types3` or use the `hint` watch subcommand
 // for a hint.
 
-// https://doc.rust-lang.org/book/ch03-02-data-types.html
+// https://doc.rust-lang.org/std/primitive.array.html
 
 fn main() {
-    // let a = [1..=100]; // an array of 100 elements, from 1 to 100
-    let a = [1..101]; // an array of 100 elements, from 1 to 100; exclude 101
+    let a: [i32; 100] = [0; 100]; // 0 repeated 100 times
 
     if a.len() >= 100 {
         println!("Wow, that's a big array!");
