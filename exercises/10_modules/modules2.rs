@@ -7,19 +7,21 @@
 // Execute `rustlings hint modules2` or use the `hint` watch subcommand for a
 // hint.
 
-// I AM NOT DONE
+// https://doc.rust-lang.org/book/ch07-02-defining-modules-to-control-scope-and-privacy.html
 
 mod delicious_snacks {
-    // TODO: Fix these use statements
-    use self::fruits::PEAR as ???
-    use self::veggies::CUCUMBER as ???
+    // 'use' keyword creates shortcuts to items to reduce repetition of long paths
+    use self::fruits::PEAR as PEAR;
+    use self::veggies::CUCUMBER as CUCUMBER;
 
-    mod fruits {
+    // pub makes these constants public to be used in main()
+    // https://doc.rust-lang.org/book/ch07-03-paths-for-referring-to-an-item-in-the-module-tree.html#exposing-paths-with-the-pub-keyword
+    pub mod fruits {
         pub const PEAR: &'static str = "Pear";
         pub const APPLE: &'static str = "Apple";
     }
 
-    mod veggies {
+    pub mod veggies {
         pub const CUCUMBER: &'static str = "Cucumber";
         pub const CARROT: &'static str = "Carrot";
     }
@@ -28,7 +30,7 @@ mod delicious_snacks {
 fn main() {
     println!(
         "favorite snacks: {} and {}",
-        delicious_snacks::fruit,
-        delicious_snacks::veggie
+        delicious_snacks::fruits::PEAR,
+        delicious_snacks::veggies::CUCUMBER
     );
 }

@@ -8,10 +8,10 @@
 // Execute `rustlings hint modules3` or use the `hint` watch subcommand for a
 // hint.
 
-// I AM NOT DONE
+// https://doc.rust-lang.org/book/ch07-04-bringing-paths-into-scope-with-the-use-keyword.html#bringing-paths-into-scope-with-the-use-keyword
 
-// TODO: Complete this use statement
-use ???
+// Import SystemTime and UNIX_EPOCH from the std::time module
+use std::time::{SystemTime, UNIX_EPOCH};
 
 fn main() {
     match SystemTime::now().duration_since(UNIX_EPOCH) {
