@@ -11,8 +11,6 @@
 // Execute `rustlings hint iterators5` or use the `hint` watch subcommand for a
 // hint.
 
-// I AM NOT DONE
-
 use std::collections::HashMap;
 
 #[derive(Clone, Copy, PartialEq, Eq)]
@@ -22,6 +20,7 @@ enum Progress {
     Complete,
 }
 
+/// Count the number of exercises with a given progress.
 fn count_for(map: &HashMap<String, Progress>, value: Progress) -> usize {
     let mut count = 0;
     for val in map.values() {
@@ -32,12 +31,15 @@ fn count_for(map: &HashMap<String, Progress>, value: Progress) -> usize {
     count
 }
 
+/// Count the number of exercises with a given progress using iterators.
+/// https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.filter
 fn count_iterator(map: &HashMap<String, Progress>, value: Progress) -> usize {
     // map is a hashmap with String keys and Progress values.
     // map = { "variables1": Complete, "from_str": None, ... }
-    todo!();
+    map.values().filter(|&val| val == &value).count()
 }
 
+/// Count the number of exercises with a given progress in a collection of progress maps.
 fn count_collection_for(collection: &[HashMap<String, Progress>], value: Progress) -> usize {
     let mut count = 0;
     for map in collection {
@@ -50,11 +52,15 @@ fn count_collection_for(collection: &[HashMap<String, Progress>], value: Progres
     count
 }
 
+/// Count the number of exercises with a given progress in a collection of progress maps using iterators.
 fn count_collection_iterator(collection: &[HashMap<String, Progress>], value: Progress) -> usize {
     // collection is a slice of hashmaps.
     // collection = [{ "variables1": Complete, "from_str": None, ... },
     //     { "variables2": Complete, ... }, ... ]
-    todo!();
+    collection
+        .iter() // iterate over the collection
+        .map(|map| count_iterator(map, value))
+        .sum()
 }
 
 #[cfg(test)]
