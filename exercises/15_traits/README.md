@@ -1,6 +1,6 @@
 # Traits
 
-A trait is a collection of methods.
+A trait is a collection of methods. It is roughly similar to an interface in other languages. Traits are used to define shared behavior between data types.
 
 Data types can implement traits. To do so, the methods making up the trait are defined for the data type. For example, the `String` data type implements the `From<&str>` trait. This allows a user to write `String::from("hello")`.
 
@@ -17,3 +17,4 @@ Because traits indicate shared behavior between data types, they are useful when
 ## Further information
 
 - [Traits](https://doc.rust-lang.org/book/ch10-02-traits.html)
+- [Trait as parameters](https://doc.rust-lang.org/stable/book/ch10-02-traits.html#traits-as-parameters)
