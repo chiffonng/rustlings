@@ -6,14 +6,16 @@
 // Execute `rustlings hint generics2` or use the `hint` watch subcommand for a
 // hint.
 
-// I AM NOT DONE
+// https://doc.rust-lang.org/rust-by-example/generics/bounds.html
 
-struct Wrapper {
-    value: u32,
+// Wrapper is a trait object that can store any type using generic type T
+struct Wrapper<T> {
+    value: T,
 }
 
-impl Wrapper {
-    pub fn new(value: u32) -> Self {
+// T uses the trait Wrapper above, so it requires T to be bound to the Wrapper trait. That means T must implement Wrapper 'impl<T> Wrapper<T>'
+impl<T> Wrapper<T> {
+    pub fn new(value: T) -> Self {
         Wrapper { value }
     }
 }

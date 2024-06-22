@@ -6,9 +6,10 @@
 // Execute `rustlings hint generics1` or use the `hint` watch subcommand for a
 // hint.
 
-// I AM NOT DONE
+// https://doc.rust-lang.org/stable/book/ch10-01-syntax.html#in-function-definitions
 
 fn main() {
-    let mut shopping_list: Vec<?> = Vec::new();
+    // 'milk' is a string slice (&str)
+    let mut shopping_list: Vec<&str> = Vec::new();
     shopping_list.push("milk");
 }
