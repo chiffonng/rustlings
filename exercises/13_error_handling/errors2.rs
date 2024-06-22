@@ -19,14 +19,22 @@
 // Execute `rustlings hint errors2` or use the `hint` watch subcommand for a
 // hint.
 
-// I AM NOT DONE
+// https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html
+// https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html#where-the--operator-can-be-used
 
 use std::num::ParseIntError;
 
 pub fn total_cost(item_quantity: &str) -> Result<i32, ParseIntError> {
     let processing_fee = 1;
     let cost_per_item = 5;
-    let qty = item_quantity.parse::<i32>();
+
+    // Use 'match' to handle the Result returned by parse::<i32>(), both Ok and Err;
+    let qty = match item_quantity.parse::<i32>() {
+        Ok(qty) => qty,
+        Err(e) => return Err(e),
+    };
+    // Use '?' operator to propagate the error from the function
+    // let qty = item_quantity.parse::<i32>()?;
 
     Ok(qty * cost_per_item + processing_fee)
 }
