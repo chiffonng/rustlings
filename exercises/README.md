@@ -26,9 +26,12 @@
 | clippy          | §21.4        |
 | conversions     | n/a          |
 
-# Important exercises to review
+## Important exercises to review
 
 - `move_semantics` for understanding ownership and borrowing
 - `lifetimes` for understanding lifetimes (scope for references)
 - `iterators` for understanding how to work with collections
 - `smart_pointers` for understanding how to manage memory
+- `threads` for understanding concurrency, parallelism, and synchronization
+- `macros` for understanding how to write code that writes code
+- `clippy` for understanding how to write idiomatic Rust code

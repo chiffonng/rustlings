@@ -6,7 +6,7 @@ For example, if you try to open a file and that operation fails because the file
 
 ## Syntax
 
-Enum Result<T, E> is used to return either a value of type T or an error of type E. It is similar to Option<T> but with an error type, or in Python, it is similar to returning data and raise an exception in case of an error.
+Enum `Result<T, E>` is used to return either a value of type `T` or an error of type `E`. It is similar to `Option<T>` but with an error type, or in Python, it is similar to returning data and raise an exception in case of an error.
 
 ```rust
 enum Result<T, E> {
