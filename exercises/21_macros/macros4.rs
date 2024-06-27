@@ -3,8 +3,6 @@
 // Execute `rustlings hint macros4` or use the `hint` watch subcommand for a
 // hint.
 
-// I AM NOT DONE
-
 /// Macro with two arms of the form: (input) -> { extension };, 
 /// 1. No input
 /// 2. One input, which must be an expression, and will be named 'val' in the macro

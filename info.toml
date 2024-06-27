@@ -1245,7 +1245,7 @@ hint = "No hints this time!"
 
 [[exercises]]
 name = "using_as"
-path = "exercises/23_conversions/using_as.rs"
+path = "exercises/23_conversions/1_using_as.rs"
 mode = "test"
 hint = """
 Use the `as` operator to cast one of the operands in the last line of the
@@ -1253,14 +1253,14 @@ Use the `as` operator to cast one of the operands in the last line of the
 
 [[exercises]]
 name = "from_into"
-path = "exercises/23_conversions/from_into.rs"
+path = "exercises/23_conversions/2_from_into.rs"
 mode = "test"
 hint = """
 Follow the steps provided right before the `From` implementation"""
 
 [[exercises]]
 name = "from_str"
-path = "exercises/23_conversions/from_str.rs"
+path = "exercises/23_conversions/3_from_str.rs"
 mode = "test"
 hint = """
 The implementation of `FromStr` should return an `Ok` with a `Person` object,
@@ -1281,7 +1281,7 @@ https://doc.rust-lang.org/stable/rust-by-example/error/multiple_error_types/reen
 
 [[exercises]]
 name = "try_from_into"
-path = "exercises/23_conversions/try_from_into.rs"
+path = "exercises/23_conversions/4_try_from_into.rs"
 mode = "test"
 hint = """
 Follow the steps provided right before the `TryFrom` implementation.
@@ -1304,7 +1304,7 @@ Challenge: Can you make the `TryFrom` implementations generic over many integer 
 
 [[exercises]]
 name = "as_ref_mut"
-path = "exercises/23_conversions/as_ref_mut.rs"
+path = "exercises/23_conversions/5_as_ref_mut.rs"
 mode = "test"
 hint = """
 Add `AsRef<str>` or `AsMut<u32>` as a trait bound to the functions."""
