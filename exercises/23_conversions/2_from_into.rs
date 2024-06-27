@@ -24,7 +24,6 @@ impl Default for Person {
     }
 }
 
-
 // Your task is to complete this implementation in order for the line `let p1 =
 // Person::from("Mark,20")` to compile. Please note that you'll need to parse the
 // age component into a `usize` with something like `"4".parse::<usize>()`. The
@@ -41,10 +40,34 @@ impl Default for Person {
 // If while parsing the age, something goes wrong, then return the default of
 // Person Otherwise, then return an instantiated Person object with the results
 
-// I AM NOT DONE
-
 impl From<&str> for Person {
-    fn from(s: &str) -> Person {}
+    fn from(s: &str) -> Person {
+        let parts: Vec<&str> = s.split(',').collect();
+
+        // Attempt to parse the name and age from the string
+        // https://doc.rust-lang.org/book/ch06-03-if-let.html
+        if let [name, age_str] = parts.as_slice() {
+            // If the name is empty, return the default person
+            if name.is_empty() {
+                return Person::default();
+            }
+            // If the converted age is valid, return the person
+            if let Ok(age) = age_str.parse::<usize>() {
+                return Person {
+                    name: name.to_string(),
+                    age,
+                };
+            }
+        }
+        // Otherwise, return the default person
+        return Person::default();
+    }
+}
+/// Convert a Person struct back into a String
+impl Into<String> for Person {
+    fn into(self) -> String {
+        format!("{},{}", self.name, self.age)
+    }
 }
 
 fn main() {

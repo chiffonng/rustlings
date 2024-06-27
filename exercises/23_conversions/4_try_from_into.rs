@@ -36,11 +36,25 @@ enum IntoColorError {
 // Note that the implementation for tuple and array will be checked at compile
 // time, but the slice implementation needs to check the slice length! Also note
 // that correct RGB color values must be integers in the 0..=255 range.
+fn is_valid_rgb_value(value: i16) -> bool {
+    (0..=255).contains(&value)
+}
 
 // Tuple implementation
 impl TryFrom<(i16, i16, i16)> for Color {
     type Error = IntoColorError;
     fn try_from(tuple: (i16, i16, i16)) -> Result<Self, Self::Error> {
+        if is_valid_rgb_value(tuple.0) && is_valid_rgb_value(tuple.1) && is_valid_rgb_value(tuple.2)
+        {
+            // Cannot loop through tuple, so we need to check each value separately
+            Ok(Color {
+                red: tuple.0 as u8,
+                green: tuple.1 as u8,
+                blue: tuple.2 as u8,
+            })
+        } else {
+            Err(Self::Error::IntConversion)
+        }
     }
 }
 
@@ -48,6 +62,18 @@ impl TryFrom<(i16, i16, i16)> for Color {
 impl TryFrom<[i16; 3]> for Color {
     type Error = IntoColorError;
     fn try_from(arr: [i16; 3]) -> Result<Self, Self::Error> {
+        // Iterate through the array and check if each value is in the 0..=255 range
+        // Use `all` method to check all values
+        // Function `is_valid_rgb_value` owns the value "c", so we need to use a reference "&c"
+        if arr.iter().all(|&c| is_valid_rgb_value(c)) {
+            Ok(Color {
+                red: arr[0] as u8,
+                green: arr[1] as u8,
+                blue: arr[2] as u8,
+            })
+        } else {
+            Err(Self::Error::IntConversion)
+        }
     }
 }
 
@@ -55,6 +81,20 @@ impl TryFrom<[i16; 3]> for Color {
 impl TryFrom<&[i16]> for Color {
     type Error = IntoColorError;
     fn try_from(slice: &[i16]) -> Result<Self, Self::Error> {
+        // Slice is a dynamic type, so we need to check the length
+        if slice.len() != 3 {
+            return Err(Self::Error::BadLen);
+        }
+        // Iterate through the slice and check if each value is in the 0..=255 range
+        if slice.iter().all(|&c| is_valid_rgb_value(c)) {
+            Ok(Color {
+                red: slice[0] as u8,
+                green: slice[1] as u8,
+                blue: slice[2] as u8,
+            })
+        } else {
+            Err(Self::Error::IntConversion)
+        }
     }
 }
 
